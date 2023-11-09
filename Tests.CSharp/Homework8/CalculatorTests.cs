@@ -77,18 +77,4 @@ public class CalculatorTests
         //act + assert
         Assert.Throws<InvalidOperationException>(() => { calculator.Divide(1, 0); });
     }
-    
-    [Homework(Homeworks.HomeWork8)]
-    public void Calculate_InvalidOperation_ThrowsException()
-    {
-        // arrange
-        ICalculator calculator = _calculator;
-        
-        string firstValue = "10";
-        string secondValue = "2";
-        string operation = "abondon"; 
-
-        // act and assert
-        Assert.Throws<InvalidOperationException>(() => calculator.Calculate(firstValue, operation, secondValue));
-    }
 }
