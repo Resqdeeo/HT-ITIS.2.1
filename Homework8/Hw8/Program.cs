@@ -8,10 +8,10 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddScoped<ICalculator, Calculator.Calculator>();
+        var builder = WebApplication.CreateBuilder(args)
 
         builder.Services.AddControllersWithViews();
+        builder.Services.AddScoped<ICalculator, Calculator.Calculator>();
 
         var app = builder.Build();
 
