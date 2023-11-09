@@ -13,6 +13,8 @@ public class Parser
             throw new ArgumentException(Messages.InvalidNumberMessage);
 
         var operation = ParseOperation(op);
+        if (operation == Operation.Invalid)
+            throw new InvalidOperationException();
 
         return (firstValue,operation ,secondValue);
     }
