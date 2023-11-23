@@ -1,6 +1,7 @@
 ﻿using Hw10.DbModels;
 using Hw10.Dto;
 using Hw10.Services.MathCalculator;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hw10.Services.CachedCalculator;
 
@@ -19,7 +20,7 @@ public class MathCachedCalculatorService : IMathCalculatorService
 	{
 		if (!string.IsNullOrEmpty(expression))
 		{
-			var solvingExpressions = _dbContext.SolvingExpressions;
+			var solvingExpressions = await _dbContext.SolvingExpressions.ToListAsync();
 			var solvingExpressionsWhere = solvingExpressions.Where(i => i.Expression == expression.Trim());
 			if (solvingExpressionsWhere.Any())
 			{
