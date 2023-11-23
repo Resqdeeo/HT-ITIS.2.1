@@ -20,11 +20,10 @@ public class MathCachedCalculatorService : IMathCalculatorService
 	{
 		if (!string.IsNullOrEmpty(expression))
 		{
-			var solvingExpressions = await _dbContext.SolvingExpressions.ToListAsync();
-			var solvingExpressionsWhere = solvingExpressions.Where(i => i.Expression == expression.Trim());
-			if (solvingExpressionsWhere.Any())
+			var solvingExpressions = await _dbContext.SolvingExpressions.FirstOrDefaultAsync(i => i.Expression == expression.Trim());
+			if (solvingExpressions != null)
 			{
-				var expressionResult = solvingExpressionsWhere.First().Result;
+				var expressionResult = solvingExpressions.Result;
 
 				await Task.Delay(500);
 
