@@ -50,7 +50,9 @@ public static class ExpressionValidator
             throw new InvalidSyntaxException(MathErrorMessager.IncorrectBracketsNumber);
         }
 
-        foreach (var letter in expressionWithoutEmpties.Where(letter => !char.IsDigit(letter) && letter != '(' && letter != ')' && letter != '.' && !Operators.Contains(letter)))
+        var letters = expressionWithoutEmpties.Where(letter =>                        //проверка на отсутствие неизвестных символов
+            !char.IsDigit(letter) && letter != '(' && letter != ')' && letter != '.' && !Operators.Contains(letter));
+        foreach (var letter in letters)
         {
             throw new InvalidSymbolException(MathErrorMessager.UnknownCharacterMessage(letter));
         }

@@ -17,28 +17,25 @@ public class ExpressionTreeConverter
             {
                 expressionStack.Push(Expression.Constant(operand));
             }
+            else if (expressionElement == "~")
+            {
+                var value = expressionStack.Pop();
+                expressionStack.Push(Expression.Negate(value));
+            }
             else
             {
-                if (expressionElement == "~")
-                {
-                    var value = expressionStack.Pop();
-                    expressionStack.Push(Expression.Negate(value));
-                }
-                else
-                {
-                    var right = expressionStack.Pop();
-                    var left = expressionStack.Pop();
+                var right = expressionStack.Pop();
+                var left = expressionStack.Pop();
 
-                    var expression = expressionElement switch
-                    {
-                        "+" => Expression.Add(left, right),
-                        "-" => Expression.Subtract(left, right),
-                        "*" => Expression.Multiply(left, right),
-                        _ => Expression.Divide(left, right)
-                    };
-
-                    expressionStack.Push(expression);
-                }
+                var expression = expressionElement switch
+                {
+                    "+" => Expression.Add(left, right),
+                    "-" => Expression.Subtract(left, right),
+                    "*" => Expression.Multiply(left, right),
+                    _ => Expression.Divide(left, right)
+                };
+                
+                expressionStack.Push(expression);
             }
         }
 
