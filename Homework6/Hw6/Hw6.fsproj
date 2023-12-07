@@ -7,6 +7,10 @@
         <RootNamespace>Hw6</RootNamespace>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <Optimize>true</Optimize>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Giraffe" Version="6.0.0" />
         <PackageReference Include="Giraffe.ViewEngine" Version="1.3.*" />

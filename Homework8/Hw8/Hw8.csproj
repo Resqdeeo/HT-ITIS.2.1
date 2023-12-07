@@ -6,6 +6,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <Optimize>true</Optimize>
+    </PropertyGroup>
+
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Pages\Calculator\Calculate.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Calculator\Calculate.cshtml" />
